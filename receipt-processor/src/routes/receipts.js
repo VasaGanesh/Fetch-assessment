@@ -4,9 +4,11 @@ const { processReceipt, getPoints } = require('../services/receiptService');
 
 router.post('/process', (req, res) => {
     try {
+        console.log("Received POST body:", JSON.stringify(req.body, null, 2));
         const id = processReceipt(req.body);
         res.json({ id });
     } catch (err) {
+        console.log( err );
         res.status(400).json({ error: 'Invalid input' });
     }
 });
